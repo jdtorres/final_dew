@@ -67,11 +67,17 @@ get "/" do
     @photos  = @graph.get_connections('me', 'photos')
     @likes   = @graph.get_connections('me', 'likes').first(4)
     @events  = @graph.get_connections('me', 'events')
-    
+
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
   erb :index
+end
+
+get "/asistentes" do
+  idev = params[:ev] 
+  @asistentes  = @graph.get_connections(idev, 'attending')
+  redirect '/'
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET

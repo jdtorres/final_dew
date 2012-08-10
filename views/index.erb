@@ -150,7 +150,7 @@
     <% if @user %>
     <section id="samples" class="clearfix">
           <h1>Selecciona un evento para mostrarte los asistentes</h1>
-
+  <!-- 
           <div class="list">
             <h3>A few of your friends</h3>
             <ul class="friends">
@@ -164,7 +164,7 @@
               <% end %>
             </ul>
           </div>
-  <!-- 
+
           <div class="list inline">
             <h3>Recent photos</h3>
             <ul class="photos">
@@ -200,7 +200,7 @@
                 <li>
                   <!-- window.open('https://graph.facebook.com/<%= evento['id'] %>') -->
                   <!-- window.open('http://www.facebook.com/<%= evento['id'] %>') -->
-                  <a href="#" onclick="window.open('https://graph.facebook.com/<%= evento['id'] %>/attending')">
+                  <a href="#" onclick="/asistentes?ev=<%= evento['id'] %>">
                     <img src="https://graph.facebook.com/<%= evento['id'] %>/picture?type=square" alt="<%= evento['name'] %>">
                     <%= evento['name'] %>
                   </a>
@@ -208,6 +208,22 @@
               <% end %>
             </ul>
           </div>
+
+          <% if @asistentes %>
+          <div class="list">
+              <h3>Lista de asistentes</h3>
+              <ul class="friends">
+                <% @asistentes.each do |friend| %>
+                  <li>
+                    <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
+                      <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
+                      <%= friend['name'] %>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 <!--
           <div class="list">
             <h3>Friends using this app</h3>
