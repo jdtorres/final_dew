@@ -81,6 +81,7 @@ get "/" do
 end
 
 get "/asistentes" do
+
   idev = params[:ev] 
   @graph  = Koala::Facebook::API.new(session[:access_token])
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
@@ -88,6 +89,7 @@ get "/asistentes" do
   @evento    = @graph.get_object(idev)
   @asistentes  = @graph.get_connections(idev, 'attending')
   @invitados  = @graph.get_connections(idev, 'invited')
+  
   erb :evento
 end
 
