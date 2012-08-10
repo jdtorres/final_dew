@@ -87,6 +87,7 @@ get "/asistentes" do
   @user    = @graph.get_object("me")
   @evento    = @graph.get_object(idev)
   @asistentes  = @graph.get_connections(idev, 'attending')
+  @invitados  = @graph.get_connections(idev, 'invited')
   erb :evento
 end
 

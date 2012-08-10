@@ -78,6 +78,22 @@
             Lista de asistentes a <%= @evento['name'] %>
           </h1>
 
+      <% if @invitados %>
+          <div class="list">
+              <h3>Lista de Invitados</h3>
+              <ul class="friends">
+                <% @invitados.each do |friend| %>
+                  <li>
+                    <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
+                      <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
+                      <%= friend['name'] %>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
           <% if @asistentes %>
           <div class="list">
               <h3>Lista de asistentes</h3>
