@@ -26,7 +26,6 @@ Mockups
 ================
 https://docs.google.com/open?id=0BxTvNMlPJbgAbTB2SnlxMHR4Y0k
 
-
 Heroku
 ================
 http://mighty-temple-7819.herokuapp.com/
