@@ -204,7 +204,7 @@
               <% end %>
             </ul>
           </div>
-
+          <!-- 
           <div class="list">
             <h3>Things you like</h3>
             <ul class="things">
@@ -213,6 +213,26 @@
                   <a href="#" onclick="window.open('http://www.facebook.com/<%= like['id'] %>')">
                     <img src="https://graph.facebook.com/<%= like['id'] %>/picture?type=square" alt="<%= like['name'] %>">
                     <%= like['name'] %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+-->
+
+            <div class="list">
+            <h3>Mis Eventos...  Elementos = <%= @events.count %> </h3>
+            <h3>Mis Eventos...  Elementos = <%= @events.size %> </h3>
+            <ul class="things">
+            <!---Datos evento upc <%#= @ev_upc.to_string %>-->
+              <% @events.each do |evento| %>
+                <li>
+                  <a href="#" onclick="window.open('http://www.facebook.com/<%= evento['id'] %>')">
+                    <img src="https://graph.facebook.com/<%= evento['id'] %>/picture?type=square" alt="<%= evento['name'] %>">
+                    <%= evento['name'] %>
+                  </a>
+                  <a href="#" onclick="window.open('https://graph.facebook.com/<%= evento['id'] %>')">
+                    JSON de <%= evento['name'] %>
                   </a>
                 </li>
               <% end %>
