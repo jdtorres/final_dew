@@ -84,6 +84,7 @@ get "/asistentes" do
   idev = params[:ev] 
   @graph  = Koala::Facebook::API.new(session[:access_token])
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @user    = @graph.get_object("me")
   @evento    = @graph.get_object(idev)
   @asistentes  = @graph.get_connections(idev, 'attending')
   erb :evento
