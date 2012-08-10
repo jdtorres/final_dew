@@ -131,35 +131,14 @@
       <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
-            <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
+            <h1>Bienvenido a <a href="<%= @app['@app'] %>"><%= @app['name'] %></a></h1>
             <p class="tagline">
-              This is your app
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+              Saludos <strong><%= @user['name'] %></strong>
             </p>
-            <div id="share-app">
-              <p>Share your app:</p>
-              <ul>
-                <li>
-                  <a href="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
-                    <span class="plus">Post to Wall</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-                    <span class="speech-bubble">Send Message</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                    <span class="apprequests">Send Requests</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
       <% else %>
         <div>
-          <h1>Welcome</h1>
+          <h1>Bienvenido</h1>
             <a href='/auth/facebook' class="fb_button fb_button_medium">
               <span class="fb_button_text">Log In</span>
             </a>
@@ -168,15 +147,9 @@
       <% end %>
     </header>
 
-    <section id="get-started">
-      <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="button">Learn How to Edit This App</a>
-    </section>
-
-
     <% if @user %>
     <section id="samples" class="clearfix">
-          <h1>Examples of the Facebook Graph API</h1>
+          <h1>Selecciona un evento para mostrarte los asistentes</h1>
 
           <div class="list">
             <h3>A few of your friends</h3>
@@ -191,7 +164,7 @@
               <% end %>
             </ul>
           </div>
-
+  <!-- 
           <div class="list inline">
             <h3>Recent photos</h3>
             <ul class="photos">
@@ -204,7 +177,7 @@
               <% end %>
             </ul>
           </div>
-          <!-- 
+        
           <div class="list">
             <h3>Things you like</h3>
             <ul class="things">
@@ -221,24 +194,21 @@
 -->
 
             <div class="list">
-            <h3>Mis Eventos...  Elementos = <%= @events.count %> </h3>
             <h3>Mis Eventos...  Elementos = <%= @events.size %> </h3>
             <ul class="things">
-            <!---Datos evento upc <%#= @ev_upc.to_string %>-->
               <% @events.each do |evento| %>
                 <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= evento['id'] %>')">
+                  <!-- window.open('https://graph.facebook.com/<%= evento['id'] %>') -->
+                  <!-- window.open('http://www.facebook.com/<%= evento['id'] %>') -->
+                  <a href="#" onclick="window.open('https://graph.facebook.com/<%= evento['id'] %>/attending')">
                     <img src="https://graph.facebook.com/<%= evento['id'] %>/picture?type=square" alt="<%= evento['name'] %>">
                     <%= evento['name'] %>
-                  </a>
-                  <a href="#" onclick="window.open('https://graph.facebook.com/<%= evento['id'] %>')">
-                    JSON de <%= evento['name'] %>
                   </a>
                 </li>
               <% end %>
             </ul>
           </div>
-
+<!--
           <div class="list">
             <h3>Friends using this app</h3>
             <ul class="friends">
@@ -252,36 +222,11 @@
               <% end %>
             </ul>
           </div>
+-->
         </section>
     <% end %>
 
 
-    <section id="guides" class="clearfix">
-      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
-      <ul>
-        <li>
-          <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="icon heroku">Heroku</a>
-          <p>Learn more about <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top">Heroku</a>, or read developer docs in the Heroku <a href="https://devcenter.heroku.com/" target="_top">Dev Center</a>.</p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/web/" target="_top" class="icon websites">Websites</a>
-          <p>
-            Drive growth and engagement on your site with
-            Facebook Login and Social Plugins.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/mobile/" target="_top" class="icon mobile-apps">Mobile Apps</a>
-          <p>
-            Integrate with our core experience by building apps
-            that operate within Facebook.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/canvas/" target="_top" class="icon apps-on-facebook">Apps on Facebook</a>
-          <p>Let users find and connect to their friends in mobile apps and games.</p>
-        </li>
-      </ul>
-    </section>
+   
   </body>
 </html>
